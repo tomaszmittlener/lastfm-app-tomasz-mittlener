@@ -7,5 +7,5 @@ import {BrowserRouter as Router } from 'react-router-dom';
 // Render the main component into the dom
 ReactDOM.render(
   <Router>
-  <App />
+    <App />
   </Router>, document.getElementById('wrapper'));

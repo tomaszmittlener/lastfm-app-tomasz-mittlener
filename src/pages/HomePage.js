@@ -1,4 +1,5 @@
 import React from 'react';
+import Page from '../components/Page';
 
 class HomePage extends React.Component {
   constructor() {
@@ -10,18 +11,20 @@ class HomePage extends React.Component {
 
   render(){
     return(
-      <div className="main-container">
-        <div className="homePage-sidebar-left"/>
-        <div className="homePage-input-container">
+      <Page>
+        <div className="main-container">
+          <div className="homePage-sidebar-left"/>
+          <div className="homePage-input-container">
 
-          <form className="username-form">
-            <input className="username-input" type="text" placeholder="enter username"/>
-            <input className="username-submit" type="submit" value="Submit"/>
-          </form>
+            <form className="username-form">
+              <input className="username-input" type="text" placeholder="enter username"/>
+              <input className="username-submit" type="submit" value="Submit"/>
+            </form>
 
+          </div>
+          <div className="homePage-sidebar-right"/>
         </div>
-        <div className="homePage-sidebar-right"/>
-      </div>
+      </Page>
     )
   }
 }
