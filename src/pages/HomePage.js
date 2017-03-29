@@ -1,5 +1,6 @@
 require('../styles/HomePage.scss');
 
+
 import React from 'react'
 import _ from 'lodash'
 
@@ -23,10 +24,13 @@ class HomePage extends React.Component {
     let topTracksNames = _.map(this.state.userTopTracks, 'name');
 
     return(
-      <div>
+      <div className="main-container">
+        <div className="left-element">LEFT ELEMENT</div>
+        <div className="right-element">
         <ul>
           {_.map(topTracksNames, (object, index) => <li key={index}>{object}</li>)}
         </ul>
+        </div>
       </div>)
   }
 
