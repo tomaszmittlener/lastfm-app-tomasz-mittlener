@@ -1,26 +1,33 @@
 require('../styles/HomePage.scss');
 
-
 import React from 'react'
-import {Link} from 'react-router-dom'
+import _ from 'lodash'
 
 class HomePage extends React.Component {
-  constructor(){
+  constructor() {
     super();
-   }
+    this.state = {
+      userTopTracks: []
+
+    };
+  }
+
+  componentWillMount(){
+    fetch('http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=flykiller&api_key=df54e5ba8935c222214a98fd3b818a43&format=json').then(
+      response => response.json()).then( response => {
+      this.setState({userTopTracks: response.toptracks.track})
+    });
+  }
 
   render(){
-    let helloCollection = [];
-    _.times(2,()=>{
-      helloCollection.push('hello')
-    });
-    return(
-    <div>
-      {helloCollection}
-      <span>TEST</span>
-      <Link to="/secondPage">Second Page</Link>
+    let topTracksNames = _.map(this.state.userTopTracks, 'name');
 
-    </div>)
+    return(
+      <div>
+        <ul>
+          {_.map(topTracksNames, (object, index) => <li key={index}>{object}</li>)}
+        </ul>
+      </div>)
   }
 
 }
