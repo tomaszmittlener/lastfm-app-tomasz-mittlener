@@ -1,15 +1,11 @@
-require('../styles/HomePage.scss');
-
-
-import React from 'react'
-import _ from 'lodash'
+import React from 'react';
+import _ from 'lodash';
 
 class HomePage extends React.Component {
   constructor() {
     super();
     this.state = {
       userTopTracks: []
-
     };
   }
 
@@ -27,13 +23,12 @@ class HomePage extends React.Component {
       <div className="main-container">
         <div className="left-element">LEFT ELEMENT</div>
         <div className="right-element">
-        <ul>
-          {_.map(topTracksNames, (object, index) => <li key={index}>{object}</li>)}
-        </ul>
+          <ul>
+            {_.map(topTracksNames, (object, index) => <li key={index}>{object}</li>)}
+          </ul>
         </div>
       </div>)
   }
-
 }
 
 export default HomePage;
