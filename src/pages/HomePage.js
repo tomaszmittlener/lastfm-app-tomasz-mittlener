@@ -1,34 +1,28 @@
 import React from 'react';
-import _ from 'lodash';
-
-import {getUserTopTracks} from '../services/getApiData'
 
 class HomePage extends React.Component {
   constructor() {
     super();
     this.state = {
-      userTopTracks: []
+      username: []
     };
   }
 
-  componentWillMount(){
-    getUserTopTracks().then(trackList => {
-      this.setState({userTopTracks: trackList.toptracks.track})
-    })
-  }
-
   render(){
-    let topTracksNames = _.map(this.state.userTopTracks, 'name');
-
     return(
       <div className="main-container">
-        <div className="left-element">LEFT ELEMENT</div>
-        <div className="right-element">
-          <ul>
-            {_.map(topTracksNames, (object, index) => <li key={index}>{object}</li>)}
-          </ul>
+        <div className="homePage-sidebar-left"/>
+        <div className="homePage-input-container">
+
+          <form className="username-form">
+            <input className="username-input" type="text" placeholder="enter username"/>
+            <input className="username-submit" type="submit" value="Submit"/>
+          </form>
+
         </div>
-      </div>)
+        <div className="homePage-sidebar-right"/>
+      </div>
+    )
   }
 }
 

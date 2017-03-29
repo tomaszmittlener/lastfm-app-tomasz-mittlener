@@ -1,11 +1,19 @@
 .main-container {
-  @include container(60rem);
+  @include container(100%);
 
-  .left-element {
-    @include span(6 of 12);
+  .homePage-sidebar-left {
+    @include span(3 first);
+
   }
 
-  .right-element {
-    @include span(4 of 12);
+  .homePage-input-container {
+    @include span(6 at 3);
+
   }
+
+  .homePage-sidebar-right {
+    @include span(3 last);
+
+  }
+
 }
