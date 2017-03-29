@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 
-import {getUserTopTracks} from '../services/getApiData'
+import {getUserTopTracks} from '../services/getData'
 
 class HomePage extends React.Component {
   constructor() {
@@ -11,21 +11,22 @@ class HomePage extends React.Component {
     };
   }
 
-  componentWillMount(){
-    getUserTopTracks().then(trackList => {
-      this.setState({userTopTracks: trackList.toptracks.track})
-    })
+  componentDidMount() {
+    getUserTopTracks(this.props.match.params.username).then(trackList => {
+      this.setState({
+        userTopTracks: trackList.toptracks.track
+      });
+    });
   }
 
-  render(){
-    let topTracksNames = _.map(this.state.userTopTracks, 'name');
 
+  render() {
     return(
       <div className="main-container">
         <div className="left-element">LEFT ELEMENT</div>
         <div className="right-element">
           <ul>
-            {_.map(topTracksNames, (object, index) => <li key={index}>{object}</li>)}
+            {_.map(this.state.userTopTracks, (track, index) => <li key={index}>{track.name}</li>)}
           </ul>
         </div>
       </div>)

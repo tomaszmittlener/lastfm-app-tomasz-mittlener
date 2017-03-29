@@ -5,24 +5,29 @@ class HomePage extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: []
+      username: ''
     };
+  }
+
+  _onSubmit(e) {
+    this.props.history.push(`/toptracks/${this.state.username}`);
+    e.preventDefault();
+  }
+
+  _onUsernameInput(e){
+    this.setState({
+      username: e.target.value
+    })
   }
 
   render(){
     return(
-      <Page>
-        <div className="main-container">
-          <div className="homePage-sidebar-left"/>
-          <div className="homePage-input-container">
-
-            <form className="username-form">
-              <input className="username-input" type="text" placeholder="enter username"/>
-              <input className="username-submit" type="submit" value="Submit"/>
-            </form>
-
-          </div>
-          <div className="homePage-sidebar-right"/>
+      <Page className="homePage">
+        <div className="input-container">
+          <form className="input-container__form" onSubmit={this._onSubmit.bind(this)}>
+            <input className="input-container__input" type="text" placeholder="enter username" onChange={this._onUsernameInput.bind(this)} />
+            <input className="input-container__submit" type="submit" value="Submit"/>
+          </form>
         </div>
       </Page>
     )

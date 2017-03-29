@@ -1,19 +1,10 @@
-.main-container {
-  @include container(100%);
+.homePage {
+  .input-container {
+    width: span(6);
+    margin: 0 span(3);
 
-  .homePage-sidebar-left {
-    @include span(3 first);
-
+    &__input {
+      width: span(12);
+    }
   }
-
-  .homePage-input-container {
-    @include span(6 at 3);
-
-  }
-
-  .homePage-sidebar-right {
-    @include span(3 last);
-
-  }
-
 }
