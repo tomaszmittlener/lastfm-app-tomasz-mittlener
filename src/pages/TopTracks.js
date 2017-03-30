@@ -13,8 +13,7 @@ class HomePage extends React.Component {
       userTopTracksWithAlbums: []
     };
   }
-  componentDidMount()
-  {
+  componentDidMount() {
     getUserTopTracks(this.props.match.params.username).then(trackList => {
       this.setState({
         userTopTracks: trackList.toptracks.track//,

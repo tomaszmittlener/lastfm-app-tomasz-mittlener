@@ -7,14 +7,21 @@ const getUserTopTracks = (userName = 'flykiller', apiKey = 'df54e5ba8935c222214a
 };
 
 
-const getTrackInfo = (artistName, trackName, apiKey = 'df54e5ba8935c222214a98fd3b818a43') => {
-  return fetch(`http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${apiKey}&artist=${artistName}&track=${trackName}&format=json`).then(
+const getTrackInfo = (trackId, apiKey = 'df54e5ba8935c222214a98fd3b818a43') => {
+  return fetch(`http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${apiKey}&mbid=${trackId}&format=json`).then(
+    response => {
+      return response.json();
+    });
+};
+
+const getArtistInfo = (artistId, apiKey = 'df54e5ba8935c222214a98fd3b818a43') => {
+  return fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&api_key=${apiKey}&mbid=${artistId}&format=json`).then(
     response => {
       return response.json();
     });
 };
 
 
-export {getUserTopTracks, getTrackInfo}
+export {getUserTopTracks, getTrackInfo, getArtistInfo}
 
 

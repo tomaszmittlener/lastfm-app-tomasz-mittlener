@@ -18,8 +18,8 @@ class App extends React.Component {
       <div className="wrapper">
         <Route exact path="/" component={HomePage}/>
         <Route exact path="/toptracks/:username" component={TopTracks}/>
-        <Route exact path="/artists/:artistName" component={ArtistPage}/>
-        <Route exact path="/tracks/:trackName" component={TrackPage}/>
+        <Route exact path="/artists/:artistId" component={ArtistPage}/>
+        <Route exact path="/tracks/:trackId" component={TrackPage}/>
       </div>
     );
   }

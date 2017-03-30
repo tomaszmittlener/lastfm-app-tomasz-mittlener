@@ -8,13 +8,14 @@ class HomePage extends React.Component {
   }
 
   render() {
+
     return(
       <div>
         <ul>
           {_.map(this.props.TopTracks, (track, index) => (
             <li key={index}><img src={track.image[0]['#text']}/>
-              <Link to={`/artists/${track.artist.name}`}>{track.artist.name}</Link> -
-              <Link to={`/tracks/${track.artist.name}_${track.name}`}>{track.name}</Link>
+              <Link to={`/artists/${track.artist.mbid}`}>{track.artist.name}</Link> -
+              <Link to={`/tracks/${track.mbid}`}>{track.name}</Link>
             </li>
           ))}
         </ul>
