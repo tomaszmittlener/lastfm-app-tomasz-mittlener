@@ -4,6 +4,7 @@ import cx from 'classnames';
 class Page extends React.Component {
 
   render() {
+
     return (
       <section className={cx('page', this.props.className)}>
         {this.props.children}
