@@ -1,38 +1,38 @@
 import React from 'react';
 
-import {getUserTopTracks, getTrackInfo } from '../services/getData';
+import {getUserTopTracks, getTrackInfo} from '../services/getData';
 import Page from '../components/Page';
 import List from '../components/List';
-//import _ from 'lodash';
+import _ from 'lodash';
 
 class HomePage extends React.Component {
   constructor() {
     super();
     this.state = {
-      userTopTracks: [],
       userTopTracksWithAlbums: []
     };
   }
   componentDidMount() {
     getUserTopTracks(this.props.match.params.username).then(trackList => {
       this.setState({
-        userTopTracks: trackList.toptracks.track//,
-        // userTopTracksWithAlbums: trackList.toptracks.track
+        userTopTracksWithAlbums: trackList.toptracks.track
       });
 
-      // _.map(this.state.userTopTracksWithAlbums, (track) => {
-      //   getTrackInfo(track.artist.name, track.name).then(trackInfo => {
-      //     trackInfo.track.album?
-      //
-      //       this.setState({
-      //         userTopTracksWithAlbums: [...trackList.toptracks.track, {album: trackInfo.track.album.title}]
-      //       }):
-      //
-      //       this.setState({
-      //         userTopTracksWithAlbums: [...trackList.toptracks.track, {album: false}]
-      //       })
-      //   })
-      // })
+      _.forEach(this.state.userTopTracksWithAlbums, (track, index) => {
+        getTrackInfo(track.mbid).then(trackInfo => {
+          const trackWithAlbumInfo = trackInfo.track && trackInfo.track.album ?
+            {...track, album: trackInfo.track.album.title } :
+            {...track, album: false};
+
+          this.setState({
+            userTopTracksWithAlbums: _.map(this.state.userTopTracksWithAlbums, (existedTrack, indexToChange) => {
+              return index === indexToChange ?
+                trackWithAlbumInfo :
+                existedTrack
+            })
+          });
+        })
+      });
     });
   }
 
@@ -40,7 +40,7 @@ class HomePage extends React.Component {
 
     return (
       <Page className="TopTracksPage">
-        <List TopTracks={this.state.userTopTracks}/>
+        <List topTracks={this.state.userTopTracksWithAlbums}/>
       </Page>
     )
   }

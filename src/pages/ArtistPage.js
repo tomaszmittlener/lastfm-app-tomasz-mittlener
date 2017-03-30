@@ -7,7 +7,7 @@ import { getArtistInfo } from '../services/getData';
 class ArtistPage extends React.Component {
   constructor() {
     super();
-    this.state= {
+    this.state = {
       artistInfo: {}
     }
   }
@@ -15,7 +15,7 @@ class ArtistPage extends React.Component {
   componentDidMount() {
     getArtistInfo(this.props.match.params.artistId).then(artistInfo => {
       this.setState({
-        artistInfo: artistInfo
+        artistInfo: artistInfo.artist
       })
     })
   }

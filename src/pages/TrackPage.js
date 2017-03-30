@@ -7,15 +7,19 @@ import { getTrackInfo } from '../services/getData';
 class TrackPage extends React.Component {
   constructor() {
     super();
-    this.state= {
-      trackInfo: {}
+    this.state = {
+      trackInfo: {},
+      trackArtistInfo: {}
     }
   }
 
   componentDidMount() {
+
+    console.log(this.props);
     getTrackInfo(this.props.match.params.trackId).then(trackInfo => {
       this.setState({
-        trackInfo: trackInfo
+        trackInfo: trackInfo.track,
+        trackArtistInfo: trackInfo.track.artist
       })
     })
   }
@@ -24,7 +28,7 @@ class TrackPage extends React.Component {
 
     return(
       <Page>
-        Track Page: {this.state.trackInfo.track.name}  by {this.state.trackInfo.track.artist.name}
+        Track Page: {this.state.trackInfo.name} by {this.state.trackArtistInfo.name}
       </Page>
     )
   }
