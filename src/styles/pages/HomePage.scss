@@ -5,6 +5,19 @@
 
     &__input {
       width: span(12);
+      margin: span(1);
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align:center;
+    }
+
+    &__submit {
+      width: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+
     }
   }
 }
