@@ -1,0 +1,17 @@
+.list-row {
+  position: relative;
+
+  &__text-container {
+    position: absolute;
+    top: 0;
+
+    &__artist {
+    }
+
+    &__track {
+    }
+
+    &__album {
+    }
+  }
+}

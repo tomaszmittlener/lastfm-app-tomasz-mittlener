@@ -14,19 +14,19 @@ class TracksList extends React.Component {
       <List className="TracksList">
 
         {_.map(this.props.topTracks, (item, index) =>
-          <div className="list-row__track" key = {index} >
-            <div className = "list-row__track__element--image">
-              <img src = {item.image[0]['#text']}/>
+          <div className="list-row" key = {index} >
+            <div className = "list-row__image-container">
+              <img src = {item.image[1]['#text']}/>
             </div>
-            <div className = "list-row__track__element--info">
-              <div className = "list-row__track__element--info__artist">
-                <Link to = {`/artists/${item.artist.mbid}`}>{item.artist.name}</Link>
-              </div>
-              <div className = "list-row__track__element--info__track">
+            <div className = "list-row__text-container">
+              <div className = "list-row__text-container__track">
                 <Link to = {`/tracks/${item.mbid}`}>{item.name}</Link>
               </div>
-              <div className = "list-row__track__element--info__album">
-                <Link to = {`/tracks/${item.mbid}`}>({item.album})</Link>
+              <div className = "list-row__text-container__artist">
+                <Link to = {`/artists/${item.artist.mbid}`}>{item.artist.name}</Link>
+              </div>
+              <div className = "list-row__text-container__album">
+                <Link to = {`/tracks/${item.mbid}`}>{item.album}</Link>
               </div>
             </div>
           </div>

@@ -1,0 +1,27 @@
+.list-row {
+  width: span(12);
+  background-color: $tableRowBackground;
+  margin: gutter() 0;
+  white-space: nowrap;
+
+  a {
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: $basicFont;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+
+  &__image-container {
+    display: inline-block;
+    margin: gutter();
+  }
+
+  &__text-container {
+    display: inline-block;
+    margin: gutter();
+  }
+}
