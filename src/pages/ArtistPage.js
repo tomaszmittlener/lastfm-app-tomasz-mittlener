@@ -24,7 +24,9 @@ class ArtistPage extends React.Component {
 
     return(
       <Page>
-        Artist Page: {this.state.artistInfo.name}
+        <div className="page__main-container__title">
+          <span className="page__main-container__title__text">{this.state.artistInfo.name}</span>
+        </div>
       </Page>
     )
   }

@@ -40,6 +40,9 @@ class HomePage extends React.Component {
 
     return (
       <Page className="TopTracksPage">
+        <div className="page__main-container__title">
+          <span className="page__main-container__title__text">Top Tracks</span>
+        </div>
         <TracksList topTracks={this.state.userTopTracksWithAlbums}/>
       </Page>
     )

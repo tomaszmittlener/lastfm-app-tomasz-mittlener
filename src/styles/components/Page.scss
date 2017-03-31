@@ -1,4 +1,4 @@
-.page{
+.page {
 
   &__logo {
     padding: gutter() 0;
@@ -6,17 +6,36 @@
     height: auto;
     background-color: $logoBackground;
 
-
-
     &__text {
-      width: span(2);
-      margin: span(5);
+      width: span(12);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
       font-size: 3rem;
-      display: table-cell;
-      vertical-align: middle;
       text-align: center;
       color: $logoText;
     }
 
+  }
+
+  &__main-container {
+    padding: 0 gutter() gutter() gutter();
+
+    &__title {
+      padding: gutter() 0;
+      width: span(12);
+      height: auto;
+
+      &__text {
+        width: span(12);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 2rem;
+        text-align: center;
+
+      }
+
+    }
   }
 }

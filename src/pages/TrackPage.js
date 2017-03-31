@@ -27,7 +27,9 @@ class TrackPage extends React.Component {
 
     return(
       <Page>
-        Track Page: {this.state.trackInfo.name} by {this.state.trackArtistInfo.name}
+        <div className="page__main-container__title">
+          <span className="page__main-container__title__text">{this.state.trackInfo.name} by {this.state.trackArtistInfo.name}</span>
+        </div>
       </Page>
     )
   }

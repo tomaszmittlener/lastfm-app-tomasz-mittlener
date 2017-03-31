@@ -7,11 +7,15 @@ class Page extends React.Component {
 
     return (
       <section className={cx('page', this.props.className)}>
+
         <div className="page__logo">
           <span className="page__logo__text">Last.fm</span>
         </div>
 
-        {this.props.children}
+        <div className="page__main-container">
+          {this.props.children}
+        </div>
+
       </section>
     );
   }
