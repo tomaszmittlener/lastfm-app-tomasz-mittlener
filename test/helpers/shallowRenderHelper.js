@@ -13,7 +13,7 @@ import TestUtils from 'react-addons-test-utils';
  *
  * @param  {Object} component The component to return the output for
  * @param  {Object} props [optional] The components properties
- * @param  {Mixed} ...children [optional] List of children
+ * @param  {Mixed} ...children [optional] List.js of children
  * @return {Object} Shallow rendered output
  */
 export default function createComponent(component, props = {}, ...children) {

@@ -15,7 +15,6 @@ class TrackPage extends React.Component {
 
   componentDidMount() {
 
-    console.log(this.props);
     getTrackInfo(this.props.match.params.trackId).then(trackInfo => {
       this.setState({
         trackInfo: trackInfo.track,

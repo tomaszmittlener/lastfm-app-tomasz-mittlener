@@ -2,7 +2,7 @@ import React from 'react';
 
 import {getUserTopTracks, getTrackInfo} from '../services/getData';
 import Page from '../components/Page';
-import List from '../components/List';
+import TracksList from '../components/TracksList';
 import _ from 'lodash';
 
 class HomePage extends React.Component {
@@ -40,7 +40,7 @@ class HomePage extends React.Component {
 
     return (
       <Page className="TopTracksPage">
-        <List topTracks={this.state.userTopTracksWithAlbums}/>
+        <TracksList topTracks={this.state.userTopTracksWithAlbums}/>
       </Page>
     )
   }
