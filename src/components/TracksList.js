@@ -39,32 +39,42 @@ class TracksList extends React.Component {
     let {tracksToDisplay} = this.state;
 
     return(
-      <List className="TracksList">
-        {this.props.children}
-        <button onClick={this._sortAlphabetically.bind(this)}>| a-z |</button>
-        <button onClick={this._groupByArtist.bind(this)}>by artist |</button>
+      <List className="list--track-list">
+        <div className="list__filters">
+          {this.props.children}
 
-        {_.map(tracksToDisplay, (item, index) =>
-          <div className="list-row" key = {index} >
-            <div className = "list-row__image-container">
-              <img src = {item.image[1]['#text']}/>
-            </div>
-            <div className = "list-row__text-container">
-              <div className = "list-row__text-container__track">
-                {item.mbid ? <Link to = {`/tracks/${item.mbid}`}>{item.name}</Link> : <div>{item.name}</div>}
-              </div>
-              <div className = "list-row__text-container__artist">
+          <button className="list__filter"
+                  onClick={this._sortAlphabetically.bind(this)}>| a-z |</button>
+
+          <button className="list__filter"
+                  onClick={this._groupByArtist.bind(this)}>by artist |</button>
+        </div>
+
+        <div className="list__items">
+
+          {_.map(tracksToDisplay, (item, index) =>
+            <div className="list-item"
+                 key = {index}>
+
+              <img className="list-item__image" src = {item.image[1]['#text']}/>
+
+              <div className = "list-item__text-container">
+
+                {item.mbid ?
+                  <h3 className="list-item__name-bold"><Link className="link" to = {`/tracks/${item.mbid}`}>{item.name}</Link></h3> :
+                  <h3 className="list-item__name-bold">{item.name}</h3>}
+
                 {item.artist.mbid ?
-                  <Link className="link list-item__name" to={`/artists/${item.artist.mbid}`}>{item.artist.name}</Link> :
+                  <h3 className="list-item__name"><Link className="link" to={`/artists/${item.artist.mbid}`}>{item.artist.name}</Link></h3> :
                   <h3 className="list-item__name">{item.artist.name}</h3>}
-              </div>
-              <div className = "list-row__text-container__album">
-                 <div>{item.album}</div>
+
+                <h3 className="list-item__name-light">{item.album}</h3>
+
               </div>
             </div>
-          </div>
-        )}
+          )}
 
+        </div>
       </List>
     )
   }

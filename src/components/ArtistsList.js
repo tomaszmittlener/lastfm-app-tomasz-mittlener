@@ -32,11 +32,13 @@ class ArtistsList extends React.Component {
       <List className="list--artist-list">
         <div className="list__filters">
           {this.props.children}
+
           <button className="list__filter"
                   onClick={this._sortAlphabetically.bind(this)}>| a-z |</button>
         </div>
 
         <div className="list__items">
+
           {_.map(artistsToDisplay, (item, index) =>
             <div className="list-item"
                  key={index}>
@@ -44,9 +46,10 @@ class ArtistsList extends React.Component {
               <img className="list-item__image" src={item.image[1]['#text']}/>
 
               <div className="list-item__text-container">
-                <h3 className="list-item__name">{item.name}</h3>
-              </div>
 
+                <h3 className="list-item__name-bold">{item.name}</h3>
+
+              </div>
             </div>
           )}
         </div>

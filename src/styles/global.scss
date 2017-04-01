@@ -1,3 +1,4 @@
+
 html {
   box-sizing: border-box;
 }
@@ -13,10 +14,10 @@ body {
 
 .link {
   text-decoration: none;
-  color: $basicFontColor;
+  color: $basicFont;
 
   &:hover {
-    border-bottom: 1px solid $basicFont;
+    text-decoration: underline;
   }
 }
 

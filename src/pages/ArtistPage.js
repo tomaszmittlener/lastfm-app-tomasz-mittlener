@@ -5,6 +5,7 @@ import ProfilePage from '../components/ProfilePage';
 import List from '../components/List';
 import ArtistsList from '../components/ArtistsList';
 import TracksList from '../components/TracksList';
+import PageTitle from '../components/PageTitle'
 
 import { getArtistInfo, getArtistTopTracks } from '../services/getData';
 
@@ -46,7 +47,7 @@ class ArtistPage extends React.Component {
       <Page>
 
         <div className="page__main-container__title">
-          <span className="page__main-container__title__text">Artist details:</span>
+          <PageTitle className="page-title--artist-details">Artist details:</PageTitle>
         </div>
 
         <ProfilePage className ={`trackPage-${this.props.match.params.artistId}`}>
@@ -75,7 +76,7 @@ class ArtistPage extends React.Component {
           <div className="profile-page__main-container__list">
 
             <div className="profile-page__main-container__list__title">
-              <span className="profile-page__main-container__list__title__text">Similar Artists</span>
+              <PageTitle className="page-title--similar-artists">Similar Artists</PageTitle>
             </div>
 
             <List>
@@ -83,7 +84,7 @@ class ArtistPage extends React.Component {
             </List>
 
             <div className="profile-page__main-container__list__title">
-              <span className="profile-page__main-container__list__title__text">Top Tracks</span>
+              <PageTitle className="page-title--top-tracks">Top Tracks</PageTitle>
             </div>
 
             <List>

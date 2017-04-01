@@ -20,7 +20,6 @@ class TrackPage extends React.Component {
   }
 
   componentDidMount() {
-
     getSimilarTracks(this.props.match.params.trackId).then(similarTracks => {
       this.setState({
         similarTracks: similarTracks.similartracks.track
@@ -37,6 +36,8 @@ class TrackPage extends React.Component {
         trackLength: trackInfo.track.duration
 
       })
+
+
     })
     debugger;
   }
