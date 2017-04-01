@@ -1,6 +1,9 @@
 import React from 'react';
 
 import Page from '../components/Page';
+import ProfilePage from '../components/ProfilePage';
+import List from '../components/List';
+import ArtistsList from '../components/ArtistsList';
 import { getArtistInfo } from '../services/getData';
 
 
@@ -8,25 +11,71 @@ class ArtistPage extends React.Component {
   constructor() {
     super();
     this.state = {
-      artistInfo: {}
-    }
+      artistInfo: {},
+      artistImage: '',
+      similarArtists: []
+    };
   }
 
   componentDidMount() {
     getArtistInfo(this.props.match.params.artistId).then(artistInfo => {
       this.setState({
-        artistInfo: artistInfo.artist
+        artistInfo: artistInfo.artist,
+        artistImage: artistInfo.artist.image[3]['#text'],
+        similarArtists: artistInfo.artist.similar,
+        artistWiki: artistInfo.artist.bio
+
       })
     })
   }
 
   render() {
+    let {artistInfo, artistImage, similarArtists, artistWiki} = this.state;
 
-    return(
+    return (
       <Page>
+
         <div className="page__main-container__title">
-          <span className="page__main-container__title__text">{this.state.artistInfo.name}</span>
+          <span className="page__main-container__title__text">Artist details:</span>
         </div>
+
+        <ProfilePage className ={`trackPage-${this.props.match.params.artistId}`}>
+          <div className="profile-page__main-container__header">
+
+            <div className="profile-page__main-container__header__art-container">
+              <img src = {artistImage}/>
+            </div>
+
+            <div className="profile-page__main-container__header__details-container">
+              <dl>
+                <dt>Artist: </dt>
+                <dd className="profile-page__main-container__header__details-container__artist-name">{artistInfo.name}</dd>
+              </dl>
+            </div>
+
+          </div>
+
+          {artistWiki ? <div className="profile-page__main-container__wiki">
+            <dl>
+              <dt>Wiki:</dt>
+              <dd>{artistWiki.summary}</dd>
+            </dl>
+          </div> : null  }
+
+          <div className="profile-page__main-container__list">
+
+            <div className="profile-page__main-container__list__title">
+              <span className="profile-page__main-container__list__title__text">Similar Artists</span>
+            </div>
+
+            <List>
+              <ArtistsList tracks={similarArtists} artistId={this.props.match.params.artistId}/>
+            </List>
+
+          </div>
+
+        </ProfilePage>
+
       </Page>
     )
   }

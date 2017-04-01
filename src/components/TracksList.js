@@ -40,7 +40,6 @@ class TracksList extends React.Component {
 
     return(
       <List className="TracksList">
-        {this.props.children}
         <button onClick={this._sortAlphabetically.bind(this)}>alphabetic</button>
         <button onClick={this._groupByArtist.bind(this)}>group by artist</button>
 

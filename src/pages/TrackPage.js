@@ -44,9 +44,11 @@ class TrackPage extends React.Component {
 
     return(
       <Page>
+
         <div className="page__main-container__title">
           <span className="page__main-container__title__text">Track details:</span>
         </div>
+
         <ProfilePage className ={`trackPage-${this.props.match.params.trackId}`}>
           <div className="profile-page__main-container__header">
 
@@ -87,6 +89,7 @@ class TrackPage extends React.Component {
           </div>
 
         </ProfilePage>
+
       </Page>
     )
   }
