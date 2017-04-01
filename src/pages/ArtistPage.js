@@ -4,7 +4,9 @@ import Page from '../components/Page';
 import ProfilePage from '../components/ProfilePage';
 import List from '../components/List';
 import ArtistsList from '../components/ArtistsList';
-import { getArtistInfo } from '../services/getData';
+import TracksList from '../components/TracksList';
+
+import { getArtistInfo, getArtistTopTracks } from '../services/getData';
 
 
 class ArtistPage extends React.Component {
@@ -13,11 +15,19 @@ class ArtistPage extends React.Component {
     this.state = {
       artistInfo: {},
       artistImage: '',
-      similarArtists: []
+      similarArtists: [],
+      artistTopTracks: []
     };
   }
 
   componentDidMount() {
+
+    getArtistTopTracks(this.props.match.params.artistId).then(artistTopTracks => {
+      this.setState({
+        artistTopTracks: artistTopTracks.toptracks.track
+      })
+    });
+
     getArtistInfo(this.props.match.params.artistId).then(artistInfo => {
       this.setState({
         artistInfo: artistInfo.artist,
@@ -30,7 +40,7 @@ class ArtistPage extends React.Component {
   }
 
   render() {
-    let {artistInfo, artistImage, similarArtists, artistWiki} = this.state;
+    let {artistInfo, artistImage, similarArtists, artistWiki, artistTopTracks} = this.state;
 
     return (
       <Page>
@@ -70,6 +80,14 @@ class ArtistPage extends React.Component {
 
             <List>
               <ArtistsList tracks={similarArtists} artistId={this.props.match.params.artistId}/>
+            </List>
+
+            <div className="profile-page__main-container__list__title">
+              <span className="profile-page__main-container__list__title__text">Top Tracks</span>
+            </div>
+
+            <List>
+              <TracksList tracks={artistTopTracks}/>
             </List>
 
           </div>

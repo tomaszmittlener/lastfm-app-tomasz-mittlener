@@ -28,7 +28,14 @@ const getSimilarTracks = (trackId, apiKey = 'df54e5ba8935c222214a98fd3b818a43') 
     });
 };
 
+const getArtistTopTracks = (artistId, apiKey = 'df54e5ba8935c222214a98fd3b818a43') => {
+  return fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&api_key=${apiKey}&mbid=${artistId}&format=json`).then(
+    response => {
+      return response.json();
+    });
+};
 
-export {getUserTopTracks, getTrackInfo, getArtistInfo, getSimilarTracks}
+
+export {getUserTopTracks, getTrackInfo, getArtistInfo, getSimilarTracks, getArtistTopTracks}
 
 
