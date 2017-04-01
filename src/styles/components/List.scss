@@ -1,27 +1,44 @@
-.list-row {
-  width: span(12);
-  background-color: $tableRowBackground;
-  margin: gutter() 0;
-  white-space: nowrap;
+.list {
+  font-size: $unitOne;
+  color: $basicFont;
 
-  a {
-    font-size: 1.1rem;
-    text-decoration: none;
-    color: $basicFont;
+  button {
+    background: none !important;
+    color: inherit;
+    border: none;
+    padding: 0.2rem;
+    font: inherit;
+    cursor: pointer;
 
     &:hover {
       text-decoration: underline;
     }
   }
 
+  .list-row {
+    width: span(12);
+    background-color: $tableRowBackground;
+    margin: gutter() 0;
+    white-space: nowrap;
 
-  &__image-container {
-    display: inline-block;
-    margin: gutter();
-  }
+    a {
+      font-size: $unitOne;
+      text-decoration: none;
+      color: $basicFont;
 
-  &__text-container {
-    display: inline-block;
-    margin: gutter();
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &__image-container {
+      display: inline-block;
+      margin: gutter();
+    }
+
+    &__text-container {
+      display: inline-block;
+      margin: gutter();
+    }
   }
 }

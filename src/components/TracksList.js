@@ -40,8 +40,9 @@ class TracksList extends React.Component {
 
     return(
       <List className="TracksList">
-        <button onClick={this._sortAlphabetically.bind(this)}>alphabetic</button>
-        <button onClick={this._groupByArtist.bind(this)}>group by artist</button>
+        {this.props.children}
+        <button onClick={this._sortAlphabetically.bind(this)}>| a-z |</button>
+        <button onClick={this._groupByArtist.bind(this)}>by artist |</button>
 
         {_.map(tracksToDisplay, (item, index) =>
           <div className="list-row" key = {index} >
@@ -50,13 +51,13 @@ class TracksList extends React.Component {
             </div>
             <div className = "list-row__text-container">
               <div className = "list-row__text-container__track">
-                <Link to = {`/tracks/${item.mbid}`}>{item.name}</Link>
+                {item.mbid ? <Link to = {`/tracks/${item.mbid}`}>{item.name}</Link> : <div>{item.name}</div>}
               </div>
               <div className = "list-row__text-container__artist">
-                <Link to = {`/artists/${item.artist.mbid}`}>{item.artist.name}</Link>
+                {item.artist.mbid ? <Link to = {`/artists/${item.artist.mbid}`}>{item.artist.name}</Link> : <div>{item.artist.name}</div>}
               </div>
               <div className = "list-row__text-container__album">
-                <Link to = {`/tracks/${item.mbid}`}>{item.album}</Link>
+                 <div>{item.album}</div>
               </div>
             </div>
           </div>

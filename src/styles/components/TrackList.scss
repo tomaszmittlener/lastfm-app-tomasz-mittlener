@@ -5,13 +5,16 @@
     position: absolute;
     top: 0;
 
-    &__artist {
-    }
-
     &__track {
     }
 
+    &__artist {
+
+      font-weight: bold;
+    }
+
     &__album {
+      font-size: $unitZero;
     }
   }
 }

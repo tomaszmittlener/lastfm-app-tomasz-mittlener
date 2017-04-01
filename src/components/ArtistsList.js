@@ -31,7 +31,7 @@ class ArtistsList extends React.Component {
     return(
       <List className="ArtistsList">
         {this.props.children}
-        <button onClick={this._sortAlphabetically.bind(this)}>alphabetic</button>
+        <button onClick={this._sortAlphabetically.bind(this)}>| a-z |</button>
 
         {_.map(artistsToDisplay, (item, index) =>
           <div className="list-row" key = {index}>

@@ -55,13 +55,12 @@ class HomePage extends React.Component {
           <span className="page__main-container__title__text">{this.props.match.params.username}'s top tracks:</span>
         </div>
         <TracksList tracks={this.state.userTopTracksWithAlbums}>
-          <button value='overall' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>overall</button>
-          <button value='7day' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>7days</button>
-          <button value='1month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>1 month</button>
-          <button value='3month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>3 month</button>
-          <button value='6month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>6 month</button>
-          <button value='12month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>12 month</button>
-
+          <button value='overall' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>(overall |</button>
+          <button value='7day' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>7days |</button>
+          <button value='1month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>1 month |</button>
+          <button value='3month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>3 month |</button>
+          <button value='6month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>6 month |</button>
+          <button value='12month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>12 month)</button>
         </TracksList>
       </Page>
     )
