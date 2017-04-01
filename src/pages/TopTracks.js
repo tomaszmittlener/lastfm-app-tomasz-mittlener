@@ -43,7 +43,7 @@ class HomePage extends React.Component {
         <div className="page__main-container__title">
           <span className="page__main-container__title__text">{this.props.match.params.username}'s top tracks:</span>
         </div>
-        <TracksList topTracks={this.state.userTopTracksWithAlbums}/>
+        <TracksList tracks={this.state.userTopTracksWithAlbums}/>
       </Page>
     )
   }

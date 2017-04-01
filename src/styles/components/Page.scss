@@ -7,19 +7,17 @@
     background-color: $logoBackground;
 
     &__text {
-      width: span(12);
+      width: span(6);
+      margin: 0 span(3);
       display: block;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 3rem;
+      font-size: $unitFive;
       text-align: center;
       color: $logoText;
     }
-
   }
 
   &__main-container {
-    padding: 0 gutter() gutter() gutter();
+    margin: 0 gutter();
 
     &__title {
       padding: gutter() 0;
@@ -31,11 +29,10 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        font-size: 2rem;
+        font-size: $unitFour;
         text-align: center;
 
       }
-
     }
   }
 }

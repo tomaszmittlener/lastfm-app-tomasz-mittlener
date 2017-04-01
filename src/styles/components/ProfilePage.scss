@@ -1,0 +1,64 @@
+.ProfilePage {
+
+  .profile-page__main-container {
+
+    dl {
+
+      dd, dt {
+        margin: 0;
+        padding: 0.3rem;
+      }
+
+      dt {
+        font-weight: bold;
+      }
+    }
+
+    .profile-page__main-container__header {
+
+      &__art-container {
+
+        img {
+          display: block;
+          margin:auto;
+        }
+      }
+
+      &__details-container {
+        display: block;
+        height: auto;
+        width: auto;
+
+        &__artist-name {
+        }
+
+        &__track-name {
+        }
+
+        &__album-name {
+        }
+      }
+    }
+
+    &__wiki {
+    }
+
+    &__list {
+
+      &__title {
+        padding: gutter() 0;
+        width: span(12);
+        height: auto;
+
+        &__text {
+          width: span(12);
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          font-size: $unitFour;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

@@ -13,7 +13,7 @@ class TracksList extends React.Component {
     return(
       <List className="TracksList">
 
-        {_.map(this.props.topTracks, (item, index) =>
+        {_.map(this.props.tracks, (item, index) =>
           <div className="list-row" key = {index} >
             <div className = "list-row__image-container">
               <img src = {item.image[1]['#text']}/>
@@ -36,6 +36,5 @@ class TracksList extends React.Component {
     )
   }
 }
-
 
 export default TracksList;
