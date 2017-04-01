@@ -13,11 +13,22 @@ class HomePage extends React.Component {
     };
   }
   componentDidMount() {
-    getUserTopTracks(this.props.match.params.username).then(trackList => {
+    let e = {
+      target: {
+        value: 'overall'
+      }
+    };
+
+    this._getTracksAndAlbumsByPeriod(e)
+
+  }
+
+  _getTracksAndAlbumsByPeriod(e){
+
+    getUserTopTracks(this.props.match.params.username, e.target.value).then(trackList => {
       this.setState({
         userTopTracksWithAlbums: trackList.toptracks.track
       });
-
       _.forEach(this.state.userTopTracksWithAlbums, (track, index) => {
         getTrackInfo(track.mbid).then(trackInfo => {
           const trackWithAlbumInfo = trackInfo.track && trackInfo.track.album ?
@@ -43,7 +54,15 @@ class HomePage extends React.Component {
         <div className="page__main-container__title">
           <span className="page__main-container__title__text">{this.props.match.params.username}'s top tracks:</span>
         </div>
-        <TracksList tracks={this.state.userTopTracksWithAlbums}/>
+        <TracksList tracks={this.state.userTopTracksWithAlbums}>
+          <button value='overall' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>overall</button>
+          <button value='7day' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>7days</button>
+          <button value='1month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>1 month</button>
+          <button value='3month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>3 month</button>
+          <button value='6month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>6 month</button>
+          <button value='12month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>12 month</button>
+
+        </TracksList>
       </Page>
     )
   }

@@ -6,14 +6,45 @@ import List from './List'
 class TracksList extends React.Component {
   constructor() {
     super();
+    this.state = {
+      tracksToDisplay:[]
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      tracksToDisplay: nextProps.tracks
+    })
+  }
+
+  _sortAlphabetically() {
+    let alphaSortedTracks= _.sortBy(this.state.tracksToDisplay, 'name');
+
+    this.setState({
+      tracksToDisplay: alphaSortedTracks
+    })
+
+  }
+
+  _groupByArtist() {
+    let artistsGroupedTracks = _.sortBy(this.state.tracksToDisplay, track => track.artist.name);
+
+    this.setState({
+      tracksToDisplay: artistsGroupedTracks
+    })
+
   }
 
   render() {
+    let {tracksToDisplay} = this.state;
 
     return(
       <List className="TracksList">
+        {this.props.children}
+        <button onClick={this._sortAlphabetically.bind(this)}>alphabetic</button>
+        <button onClick={this._groupByArtist.bind(this)}>group by artist</button>
 
-        {_.map(this.props.tracks, (item, index) =>
+        {_.map(tracksToDisplay, (item, index) =>
           <div className="list-row" key = {index} >
             <div className = "list-row__image-container">
               <img src = {item.image[1]['#text']}/>
