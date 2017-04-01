@@ -100,3 +100,5 @@ class ArtistPage extends React.Component {
 }
 
 export default ArtistPage;
+
+

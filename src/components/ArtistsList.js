@@ -29,26 +29,27 @@ class ArtistsList extends React.Component {
     let {artistsToDisplay} = this.state;
 
     return(
-      <List className="ArtistsList">
-        {this.props.children}
-        <button onClick={this._sortAlphabetically.bind(this)}>| a-z |</button>
+      <List className="list--artist-list">
+        <div className="list__filters">
+          {this.props.children}
+          <button className="list__filter"
+                  onClick={this._sortAlphabetically.bind(this)}>| a-z |</button>
+        </div>
 
-        {_.map(artistsToDisplay, (item, index) =>
-          <div className="list-row" key = {index}>
+        <div className="list__items">
+          {_.map(artistsToDisplay, (item, index) =>
+            <div className="list-item"
+                 key={index}>
 
-            <div className = "list-row__image-container">
-              <img src = {item.image[1]['#text']}/>
-            </div>
+              <img className="list-item__image" src={item.image[1]['#text']}/>
 
-            <div className = "list-row__text-container">
-              <div className = "list-row__text-container__artist">
-                <div>{item.name}</div>
+              <div className="list-item__text-container">
+                <h3 className="list-item__name">{item.name}</h3>
               </div>
+
             </div>
-
-          </div>
-        )}
-
+          )}
+        </div>
       </List>
     )
   }

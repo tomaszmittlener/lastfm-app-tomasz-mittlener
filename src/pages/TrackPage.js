@@ -33,14 +33,16 @@ class TrackPage extends React.Component {
         trackArtistInfo: trackInfo.track.artist,
         trackImage: trackInfo.track.album.image[3]['#text'],
         trackAlbum: trackInfo.track.album,
-        trackWiki: trackInfo.track.wiki
+        trackWiki: trackInfo.track.wiki,
+        trackLength: trackInfo.track.duration
 
       })
     })
+    debugger;
   }
 
   render() {
-    let {trackInfo, trackImage, trackArtistInfo, trackAlbum, trackWiki, similarTracks} = this.state;
+    let {trackInfo, trackImage, trackArtistInfo, trackAlbum, trackWiki, similarTracks, trackLength} = this.state;
 
     return(
       <Page>
@@ -58,10 +60,12 @@ class TrackPage extends React.Component {
 
             <div className="profile-page__main-container__header__details-container">
               <dl>
-                <dt>Artist: </dt>
-                <dd className="profile-page__main-container__header__details-container__artist-name">{trackArtistInfo.name}</dd>
                 <dt>Track title: </dt>
                 <dd className="profile-page__main-container__header__details-container__track-name">{trackInfo.name}</dd>
+                <dt>Track length: </dt>
+                <dd className="profile-page__main-container__header__details-container__track-length">{trackLength}</dd>
+                <dt>Artist: </dt>
+                <dd className="profile-page__main-container__header__details-container__artist-name">{trackArtistInfo.name}</dd>
                 <dt>Album: </dt>
                 <dd className="profile-page__main-container__header__details-container__album-name">{trackAlbum.title}</dd>
               </dl>
@@ -96,3 +100,4 @@ class TrackPage extends React.Component {
 }
 
 export default TrackPage;
+

@@ -1,9 +1,8 @@
 .list {
-  font-size: $unitOne;
-  color: $basicFont;
+  overflow: hidden;
 
   button {
-    background: none !important;
+    background: none;
     color: inherit;
     border: none;
     padding: 0.2rem;
@@ -15,30 +14,34 @@
     }
   }
 
-  .list-row {
-    width: span(12);
+  &__filters {
+    margin: 0 0 $unitOne 0;
+  }
+
+  &__items {
+    overflow: hidden;
+  }
+
+  &-item {
+    @include gallery(3 of 12);
     background-color: $tableRowBackground;
-    margin: gutter() 0;
-    white-space: nowrap;
+    display: flex;
+    margin: 0 0 gutter() 0;
 
-    a {
-      font-size: $unitOne;
-      text-decoration: none;
-      color: $basicFont;
 
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    &__image-container {
+    &__image {
       display: inline-block;
-      margin: gutter();
     }
 
     &__text-container {
       display: inline-block;
-      margin: gutter();
+      width: span(12);
+      padding: gutter() * 2;
+    }
+
+    &__name {
+      color: $basicFont;
+      margin: 0;
     }
   }
 }

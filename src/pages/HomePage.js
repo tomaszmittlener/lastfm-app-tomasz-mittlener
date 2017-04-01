@@ -5,8 +5,18 @@ class HomePage extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: ''
+      username: '',
+      isSubmitDisabled: true,
+      onSubmit: this._onSubmit.bind(this)
     };
+  }
+
+  componentDidMount() {
+    document.getElementById('form').addEventListener('submit', this.state.onSubmit);
+  }
+
+  componentWillUnmount() {
+    document.getElementById('form').removeEventListener('submit', this.state.onSubmit);
   }
 
   _onSubmit(e) {
@@ -16,7 +26,8 @@ class HomePage extends React.Component {
 
   _onUsernameInput(e){
     this.setState({
-      username: e.target.value
+      username: e.target.value,
+      isSubmitDisabled: !!(e.target.value.length <= 0)
     })
   }
 
@@ -29,8 +40,15 @@ class HomePage extends React.Component {
         </div>
 
         <div className="input-container">
-          <form className="input-container__form" onSubmit={this._onSubmit.bind(this)}>
-            <input className="input-container__input" type="text" placeholder="enter username" onChange={this._onUsernameInput.bind(this)} />
+          <form id="form"
+                className="input-container__form">
+            <input className="input-container__input"
+                   type="text"
+                   placeholder="enter username"
+                   onChange={this._onUsernameInput.bind(this)}
+                   required/>
+
+            <button type="submit" disabled={this.state.isSubmitDisabled}>submit</button>
           </form>
         </div>
       </Page>
