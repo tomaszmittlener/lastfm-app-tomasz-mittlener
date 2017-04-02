@@ -1,11 +1,8 @@
 .details{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin: 0 0 ms(4) 0;
 
   &__image {
-    margin: 0 gutter();
-
+    width: span(12);
   }
 
   &__list {
@@ -13,16 +10,53 @@
 
     .title, .description {
       margin: 0;
-      padding: 0.3rem;
+      padding: 0 0 ms(1) 0;
     }
 
     .title {
       font-weight: bold;
-
     }
 
     .description {
       max-width: 60ch;
+
+      &:last-child{
+        padding: 0
+      }
+    }
+  }
+}
+
+@include susy-breakpoint($mobile-l) {
+
+}
+@include susy-breakpoint($tablet) {
+  .details {
+    overflow: hidden;
+
+    &__image {
+      @include span(4 of 10);
+    }
+
+    &__list {
+      @include span(6 of 10 last);
+
+      .title, .description {
+        margin: 0;
+        padding: 0 0 ms(1) 0;
+      }
+
+      .title {
+        font-weight: bold;
+      }
+
+      .description {
+        max-width: 60ch;
+
+        &:last-child{
+          padding: 0
+        }
+      }
     }
   }
 }

@@ -1,5 +1,9 @@
 //susy global settings
 
+$ms-base: 1rem;
+
+$ms-ratio: $major-third;
+
 $susy: (
   columns: 12,
   gutters: 1/4,
@@ -12,9 +16,6 @@ $susy: (
   )
 );
 
-//modular scale global settings
 
-$ms-base: 0.4em;
-$ms-ratio: $golden;
 
 

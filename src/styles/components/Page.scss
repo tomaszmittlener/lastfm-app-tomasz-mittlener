@@ -1,4 +1,6 @@
 .page {
+  overflow: hidden;
+  @include container();
 
   &__nav {
     padding: gutter() 0;
@@ -18,13 +20,11 @@
         height: ms(3);
         fill: $logoText;
       }
-
     }
   }
 
   &__container {
-    margin: 0 gutter();
-
-
+    width: span(10);
+    margin: 0 span(1) + gutter();
   }
 }

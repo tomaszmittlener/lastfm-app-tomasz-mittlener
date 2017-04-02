@@ -53,12 +53,12 @@ class TopTracks extends React.Component {
         <PageTitle className="page-title--user-top-tracks">{this.props.match.params.username}'s top tracks:</PageTitle>
 
         <TracksList tracks={this.state.userTopTracksWithAlbums}>
-          <button data-period='overall' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>(<span>overall</span> |</button>
-          <button data-period='7day' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>7days</span> |</button>
-          <button data-period='1month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>1 month</span> |</button>
-          <button data-period='3month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>3 month</span> |</button>
-          <button data-period='6month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>6 month</span> |</button>
-          <button data-period='12month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>12 month</span>)</button>
+          <button className="list__filter" data-period='overall' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>(<span>overall</span> |</button>
+          <button className="list__filter" data-period='7day' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>7days</span> |</button>
+          <button className="list__filter" data-period='1month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>1 month</span> |</button>
+          <button className="list__filter" data-period='3month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>3 month</span> |</button>
+          <button className="list__filter" data-period='6month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>6 month</span> |</button>
+          <button className="list__filter" data-period='12month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>12 month</span>)</button>
         </TracksList>
       </Page>
     )

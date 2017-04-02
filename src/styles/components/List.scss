@@ -1,69 +1,74 @@
 .list {
   overflow: hidden;
 
-  button {
+  //filter buttons
+
+  &__filter {
+    margin: 0 0 ms(2) 0;
+    font-size: ms(2);
     background: none;
     color: inherit;
     border: none;
     padding: 0.2rem;
-    font: inherit;
     cursor: pointer;
 
     &:hover {
       span {
         text-decoration: underline;
-
       }
-
     }
   }
 
-  &__filters {
-    margin: 0 0 ms(2) 0;
-    font-size: ms(2);
-  }
+  //list items
 
   &__items {
-    overflow: hidden;
+
   }
 
   &-item {
-    @include gallery(3 of 12);
+    @include gallery(4 of 12);
     background-color: $tableRowBackground;
-    display: flex;
     margin: 0 0 gutter() 0;
+    display: flex;
+
+
 
     &__image {
       display: inline-block;
+      width: 64px;
+      height: 64px;
+      margin: gutter()
     }
 
     &__text-container {
-      display: inline-block;
+      padding: gutter();
       width: span(12);
-      padding: gutter() * 2;
+      white-space: nowrap;
+
     }
 
     &__name {
       color: $basicFont;
+      width: span(9);
       margin: 0;
       font-weight: normal;
       font-size: ms(2);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
 
     }
 
     &__name-bold {
-      margin: 0;
-      color: $basicFont;
       font-weight: bolder;
       font-size: ms(2);
 
     }
 
     &__name-light {
-      margin: 0;
       font-weight: normal;
-      color: $basicFont;
-      font-size: ms(1);
+      font-style: italic;
     }
 
   }

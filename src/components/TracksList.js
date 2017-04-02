@@ -61,14 +61,14 @@ class TracksList extends React.Component {
               <div className = "list-item__text-container">
 
                 {item.mbid ?
-                  <h3 className="list-item__name-bold"><Link className="link" to = {`/tracks/${item.mbid}`}>{item.name}</Link></h3> :
-                  <h3 className="list-item__name-bold">{item.name}</h3>}
+                  <h3 className="list-item__name list-item__name-bold"><Link className="link" to = {`/tracks/${item.mbid}`}>{item.name}</Link></h3> :
+                  <h3 className=" list-item__name list-item__name-bold">{item.name}</h3>}
 
                 {item.artist.mbid ?
                   <h3 className="list-item__name"><Link className="link" to={`/artists/${item.artist.mbid}`}>{item.artist.name}</Link></h3> :
                   <h3 className="list-item__name">{item.artist.name}</h3>}
 
-                <h3 className="list-item__name-light">{item.album}</h3>
+                <h3 className="list-item__name list-item__name-light">{item.album}</h3>
 
               </div>
             </div>

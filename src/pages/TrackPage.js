@@ -49,7 +49,6 @@ class TrackPage extends React.Component {
       /**
        */
 
-
       this.setState({
         trackInfo: trackInfo.track,
         trackArtistInfo: trackInfo.track.artist,
@@ -57,10 +56,7 @@ class TrackPage extends React.Component {
         trackAlbum: trackInfo.track.album,
         trackWiki: wikiHtmlRemoved,
         trackLength: convertedTime
-
       })
-
-
     })
   }
 

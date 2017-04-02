@@ -6,9 +6,9 @@ class PageTitle extends React.Component {
   render() {
 
     return (
-      <span className={cx('page-title', this.props.className)}>
+      <h2 className={cx('page-title', this.props.className)}>
         {this.props.children}
-      </span>
+      </h2>
     );
   }
 }
