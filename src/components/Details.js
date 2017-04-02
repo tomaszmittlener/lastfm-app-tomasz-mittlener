@@ -6,12 +6,8 @@ class ProfilePage extends React.Component {
   render() {
 
     return (
-      <section className={cx('ProfilePage', this.props.className)}>
-
-        <div className="profile-page__main-container">
+      <section className={cx('details', this.props.className)}>
           {this.props.children}
-        </div>
-
       </section>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Page from '../components/Page';
+import PageTitle from '../components/PageTitle';
 
 class HomePage extends React.Component {
   constructor() {
@@ -35,22 +36,19 @@ class HomePage extends React.Component {
     return(
       <Page className="homePage">
 
-        <div className="page__main-container__title">
-          <span className="page__main-container__title__text">Welcome to the last.fm top tracks history app!</span>
-        </div>
+        <PageTitle className="page-title--welcome">Welcome to the last.fm top tracks history app!</PageTitle>
 
-        <div className="input-container">
+
           <form id="form"
-                className="input-container__form">
-            <input className="input-container__input"
+                className="form">
+            <input className="form__input"
                    type="text"
                    placeholder="enter username"
                    onChange={this._onUsernameInput.bind(this)}
                    required/>
 
-            <button type="submit" disabled={this.state.isSubmitDisabled}>submit</button>
+            <button className="form__button" type="submit" disabled={this.state.isSubmitDisabled}>submit</button>
           </form>
-        </div>
       </Page>
     )
   }

@@ -12,7 +12,7 @@ class ArtistsList extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      artistsToDisplay: nextProps.tracks.artist
+      artistsToDisplay: nextProps.artists.artist
     })
   }
 
@@ -34,7 +34,7 @@ class ArtistsList extends React.Component {
           {this.props.children}
 
           <button className="list__filter"
-                  onClick={this._sortAlphabetically.bind(this)}>| a-z |</button>
+                  onClick={this._sortAlphabetically.bind(this)}>| <span>a-z</span> |</button>
         </div>
 
         <div className="list__items">
@@ -59,3 +59,7 @@ class ArtistsList extends React.Component {
 }
 
 export default ArtistsList;
+
+ArtistsList.propTypes = {
+  artists: React.PropTypes.object
+};

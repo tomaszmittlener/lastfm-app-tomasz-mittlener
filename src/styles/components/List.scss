@@ -10,7 +10,11 @@
     cursor: pointer;
 
     &:hover {
-      text-decoration: underline;
+      span {
+        text-decoration: underline;
+
+      }
+
     }
   }
 
@@ -52,7 +56,6 @@
       color: $basicFont;
       font-weight: bolder;
       font-size: ms(2);
-
 
     }
 

@@ -1,16 +1,20 @@
 .page {
+  svg{
+    width: ms(4);
+    height: ms(3);
+    fill: $logoText;
+  }
 
-  &__logo {
+  .logo {
     padding: gutter() 0;
     width: span(12);
     height: auto;
     background-color: $logoBackground;
 
-    &__text {
-      width: span(6);
-      margin: 0 span(3);
+    .logo-text {
       display: block;
-      font-size: ms(3);
+      font-size: ms(4);
+      font-weight: bold;
       text-align: center;
       color: $logoText;
     }
@@ -19,20 +23,6 @@
   &__main-container {
     margin: 0 gutter();
 
-    &__title {
-      padding: gutter() 0;
-      width: span(12);
-      height: auto;
 
-      &__text {
-        width: span(12);
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        font-size: ms(2);
-        text-align: center;
-
-      }
-    }
   }
 }

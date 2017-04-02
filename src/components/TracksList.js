@@ -44,10 +44,10 @@ class TracksList extends React.Component {
           {this.props.children}
 
           <button className="list__filter"
-                  onClick={this._sortAlphabetically.bind(this)}>| a-z |</button>
+                  onClick={this._sortAlphabetically.bind(this)}>| <span>a-z</span> |</button>
 
           <button className="list__filter"
-                  onClick={this._groupByArtist.bind(this)}>by artist |</button>
+                  onClick={this._groupByArtist.bind(this)}><span>by artist</span> |</button>
         </div>
 
         <div className="list__items">
@@ -73,7 +73,6 @@ class TracksList extends React.Component {
               </div>
             </div>
           )}
-
         </div>
       </List>
     )
@@ -81,3 +80,7 @@ class TracksList extends React.Component {
 }
 
 export default TracksList;
+
+TracksList.propTypes = {
+  tracks: React.PropTypes.array
+};

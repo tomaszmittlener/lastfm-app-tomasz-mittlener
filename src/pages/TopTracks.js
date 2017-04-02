@@ -4,8 +4,10 @@ import {getUserTopTracks, getTrackInfo} from '../services/getData';
 import Page from '../components/Page';
 import TracksList from '../components/TracksList';
 import _ from 'lodash';
+import PageTitle from '../components/PageTitle';
 
-class HomePage extends React.Component {
+
+class TopTracks extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -47,16 +49,16 @@ class HomePage extends React.Component {
 
     return (
       <Page className="TopTracksPage">
-        <div className="page__main-container__title">
-          <span className="page__main-container__title__text">{this.props.match.params.username}'s top tracks:</span>
-        </div>
+
+        <PageTitle className="page-title--user-top-tracks">{this.props.match.params.username}'s top tracks:</PageTitle>
+
         <TracksList tracks={this.state.userTopTracksWithAlbums}>
-          <button data-period='overall' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>(overall |</button>
-          <button data-period='7day' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>7days |</button>
-          <button data-period='1month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>1 month |</button>
-          <button data-period='3month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>3 month |</button>
-          <button data-period='6month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>6 month |</button>
-          <button data-period='12month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>12 month)</button>
+          <button data-period='overall' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>(<span>overall</span> |</button>
+          <button data-period='7day' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>7days</span> |</button>
+          <button data-period='1month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>1 month</span> |</button>
+          <button data-period='3month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>3 month</span> |</button>
+          <button data-period='6month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>6 month</span> |</button>
+          <button data-period='12month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>12 month</span>)</button>
         </TracksList>
       </Page>
     )
@@ -64,8 +66,4 @@ class HomePage extends React.Component {
 }
 
 
-export default HomePage;
-
-
-
-
+export default TopTracks;

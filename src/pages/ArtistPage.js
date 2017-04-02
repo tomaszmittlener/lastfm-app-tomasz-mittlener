@@ -1,11 +1,12 @@
 import React from 'react';
+import _ from 'lodash';
 
 import Page from '../components/Page';
-import ProfilePage from '../components/ProfilePage';
+import Details from '../components/Details';
 import List from '../components/List';
 import ArtistsList from '../components/ArtistsList';
 import TracksList from '../components/TracksList';
-import PageTitle from '../components/PageTitle'
+import PageTitle from '../components/PageTitle';
 
 import { getArtistInfo, getArtistTopTracks } from '../services/getData';
 
@@ -16,8 +17,9 @@ class ArtistPage extends React.Component {
     this.state = {
       artistInfo: {},
       artistImage: '',
-      similarArtists: [],
-      artistTopTracks: []
+      similarArtists: {},
+      artistTopTracks: [],
+      artistWiki: ''
     };
   }
 
@@ -30,13 +32,22 @@ class ArtistPage extends React.Component {
     });
 
     getArtistInfo(this.props.match.params.artistId).then(artistInfo => {
+
+      /**
+       * temporary html remover
+       * needs more work
+       */
+      let artistWiki = artistInfo.artist.bio.summary;
+      let wikiHtmlRemoved = _.replace(artistWiki, /<\/?[^>]+(>|$)/g, '');
+      /**
+       */
+
       this.setState({
         artistInfo: artistInfo.artist,
         artistImage: artistInfo.artist.image[3]['#text'],
         similarArtists: artistInfo.artist.similar,
-        artistWiki: artistInfo.artist.bio
-
-      })
+        artistWiki: wikiHtmlRemoved
+      });
     })
   }
 
@@ -45,55 +56,39 @@ class ArtistPage extends React.Component {
 
     return (
       <Page>
+        <PageTitle className="page-title--artist-details">Artist details:</PageTitle>
 
-        <div className="page__main-container__title">
-          <PageTitle className="page-title--artist-details">Artist details:</PageTitle>
-        </div>
+        <Details className ={`details--artist-${this.props.match.params.artistId}`}>
 
-        <ProfilePage className ={`trackPage-${this.props.match.params.artistId}`}>
-          <div className="profile-page__main-container__header">
+            <img className="details__image" src = {artistImage}/>
 
-            <div className="profile-page__main-container__header__art-container">
-              <img src = {artistImage}/>
-            </div>
-
-            <div className="profile-page__main-container__header__details-container">
-              <dl>
-                <dt>Artist: </dt>
-                <dd className="profile-page__main-container__header__details-container__artist-name">{artistInfo.name}</dd>
-              </dl>
-            </div>
-
-          </div>
-
-          {artistWiki ? <div className="profile-page__main-container__wiki">
-            <dl>
-              <dt>Wiki:</dt>
-              <dd>{artistWiki.summary}</dd>
+            <dl className="details__list">
+              <dt className="title">Artist: </dt>
+              <dd className="description">{artistInfo.name}</dd>
+              {artistWiki ?
+                <div>
+                  <dt className="title">Wiki:</dt>
+                  <dd className="description">{artistWiki}</dd>
+                </div> :
+                null}
             </dl>
-          </div> : null  }
 
-          <div className="profile-page__main-container__list">
+        </Details>
 
-            <div className="profile-page__main-container__list__title">
-              <PageTitle className="page-title--similar-artists">Similar Artists</PageTitle>
-            </div>
+        {/*LISTS*/}
 
-            <List>
-              <ArtistsList tracks={similarArtists} artistId={this.props.match.params.artistId}/>
-            </List>
+        <PageTitle className="page-title--similar-artists">Similar Artists</PageTitle>
 
-            <div className="profile-page__main-container__list__title">
-              <PageTitle className="page-title--top-tracks">Top Tracks</PageTitle>
-            </div>
+        <List>
+          <ArtistsList artists={similarArtists} artistId={this.props.match.params.artistId}/>
+        </List>
 
-            <List>
-              <TracksList tracks={artistTopTracks}/>
-            </List>
+        <PageTitle className="page-title--top-tracks">Top Tracks</PageTitle>
 
-          </div>
+        <List>
+          <TracksList tracks={artistTopTracks}/>
+        </List>
 
-        </ProfilePage>
 
       </Page>
     )
@@ -101,5 +96,3 @@ class ArtistPage extends React.Component {
 }
 
 export default ArtistPage;
-
-

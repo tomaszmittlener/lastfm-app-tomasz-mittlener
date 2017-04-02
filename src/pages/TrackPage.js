@@ -1,9 +1,11 @@
 import React from 'react';
+import _ from 'lodash';
 
 import Page from '../components/Page';
-import ProfilePage from '../components/ProfilePage';
+import Details from '../components/Details';
 import List from '../components/List';
 import TrackList from '../components/TracksList';
+import PageTitle from '../components/PageTitle';
 import { getTrackInfo, getSimilarTracks } from '../services/getData';
 
 class TrackPage extends React.Component {
@@ -15,7 +17,7 @@ class TrackPage extends React.Component {
       trackArtistInfo: {},
       trackImage: {},
       trackAlbum: [],
-      trackWiki: {}
+      trackWiki: ''
     }
   }
 
@@ -27,19 +29,39 @@ class TrackPage extends React.Component {
     });
 
     getTrackInfo(this.props.match.params.trackId).then(trackInfo => {
+
+      /**
+       * temporary html remover
+       * needs more work
+       */
+      let trackWiki = trackInfo.track.wiki.summary;
+      let wikiHtmlRemoved = _.replace(trackWiki, /<\/?[^>]+(>|$)/g, '');
+      /**
+       */
+
+      /**
+       * temporary milliseconds to minutes and seconds converter
+       * needs more work
+       */
+      let minutes = Math.floor(trackInfo.track.duration / 60000);
+      let seconds = ((trackInfo.track.duration % 60000) / 1000).toFixed(0);
+      let convertedTime = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+      /**
+       */
+
+
       this.setState({
         trackInfo: trackInfo.track,
         trackArtistInfo: trackInfo.track.artist,
         trackImage: trackInfo.track.album.image[3]['#text'],
         trackAlbum: trackInfo.track.album,
-        trackWiki: trackInfo.track.wiki,
-        trackLength: trackInfo.track.duration
+        trackWiki: wikiHtmlRemoved,
+        trackLength: convertedTime
 
       })
 
 
     })
-    debugger;
   }
 
   render() {
@@ -47,58 +69,43 @@ class TrackPage extends React.Component {
 
     return(
       <Page>
+        <PageTitle className="page-title--track-details">Track details:</PageTitle>
 
-        <div className="page__main-container__title">
-          <span className="page__main-container__title__text">Track details:</span>
-        </div>
+        <Details className ={`details--track-${this.props.match.params.trackId}`}>
 
-        <ProfilePage className ={`trackPage-${this.props.match.params.trackId}`}>
-          <div className="profile-page__main-container__header">
+          <img className="details__image" src = {trackImage}/>
 
-            <div className="profile-page__main-container__header__art-container">
-              <img src = {trackImage}/>
-            </div>
 
-            <div className="profile-page__main-container__header__details-container">
-              <dl>
-                <dt>Track title: </dt>
-                <dd className="profile-page__main-container__header__details-container__track-name">{trackInfo.name}</dd>
-                <dt>Track length: </dt>
-                <dd className="profile-page__main-container__header__details-container__track-length">{trackLength}</dd>
-                <dt>Artist: </dt>
-                <dd className="profile-page__main-container__header__details-container__artist-name">{trackArtistInfo.name}</dd>
-                <dt>Album: </dt>
-                <dd className="profile-page__main-container__header__details-container__album-name">{trackAlbum.title}</dd>
-              </dl>
-            </div>
+          <dl className="details__list">
+            <dt className="title">Track title: </dt>
+            <dd className="description">{trackInfo.name}</dd>
+            <dt className="title">Track length: </dt>
+            <dd className="description">{trackLength}</dd>
+            <dt className="title">Artist: </dt>
+            <dd className="description">{trackArtistInfo.name}</dd>
+            <dt className="title">Album: </dt>
+            <dd className="description">{trackAlbum.title}</dd>
+            {trackWiki ?
+              <div>
+                <dt className="title">Wiki:</dt>
+                <dd className="description">{trackWiki}</dd>
+              </div> :
+              null  }
+          </dl>
 
-          </div>
+        </Details>
 
-          {trackWiki ? <div className="profile-page__main-container__wiki">
-            <dl>
-              <dt>Wiki:</dt>
-              <dd>{trackWiki.summary}</dd>
-            </dl>
-          </div> : null  }
+        {/*LISTS*/}
 
-          <div className="profile-page__main-container__list">
+        <PageTitle className="page-title--similar-tracks">Similar tracks</PageTitle>
 
-            <div className="profile-page__main-container__list__title">
-              <span className="profile-page__main-container__list__title__text">Similar Tracks</span>
-            </div>
 
-            <List>
-              <TrackList tracks={similarTracks}/>
-            </List>
-
-          </div>
-
-        </ProfilePage>
-
+        <List>
+          <TrackList tracks={similarTracks}/>
+        </List>
       </Page>
     )
   }
 }
 
 export default TrackPage;
-
