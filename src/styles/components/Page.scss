@@ -1,26 +1,28 @@
 .page {
-  svg{
-    width: ms(4);
-    height: ms(3);
-    fill: $logoText;
-  }
 
-  .logo {
+  &__nav {
     padding: gutter() 0;
     width: span(12);
     height: auto;
     background-color: $logoBackground;
 
-    .logo-text {
+    .nav-items {
       display: block;
       font-size: ms(4);
       font-weight: bold;
       text-align: center;
       color: $logoText;
+
+      .nav-item__logo {
+        width: ms(4);
+        height: ms(3);
+        fill: $logoText;
+      }
+
     }
   }
 
-  &__main-container {
+  &__container {
     margin: 0 gutter();
 
 
