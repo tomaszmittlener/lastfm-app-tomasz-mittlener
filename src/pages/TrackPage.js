@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import replace from 'lodash/replace';
 
 import Page from '../components/Page';
 import Details from '../components/Details';
@@ -35,7 +35,7 @@ class TrackPage extends React.Component {
        * needs more work
        */
       let trackWiki = trackInfo.track.wiki.summary;
-      let wikiHtmlRemoved = _.replace(trackWiki, /<\/?[^>]+(>|$)/g, '');
+      let wikiHtmlRemoved = replace(trackWiki, /<\/?[^>]+(>|$)/g, '');
       /**
        */
 

@@ -1,9 +1,12 @@
 import React from 'react';
+import forEach from 'lodash/forEach';
+import map from 'lodash/map';
 
 import {getUserTopTracks, getTrackInfo} from '../services/getData';
 import Page from '../components/Page';
 import TracksList from '../components/TracksList';
-import _ from 'lodash';
+
+
 import PageTitle from '../components/PageTitle';
 
 
@@ -27,14 +30,15 @@ class TopTracks extends React.Component {
       this.setState({
         userTopTracksWithAlbums: trackList.toptracks.track
       });
-      _.forEach(this.state.userTopTracksWithAlbums, (track, index) => {
+      forEach(this.state.userTopTracksWithAlbums, (track, index) => {
         getTrackInfo(track.mbid).then(trackInfo => {
-          const trackWithAlbumInfo = trackInfo.track && trackInfo.track.album ?
+          const trackWithAlbumInfo =
+            trackInfo.track && trackInfo.track.album ?
             {...track, album: trackInfo.track.album.title } :
             {...track, album: false};
 
           this.setState({
-            userTopTracksWithAlbums: _.map(this.state.userTopTracksWithAlbums, (existedTrack, indexToChange) => {
+            userTopTracksWithAlbums: map(this.state.userTopTracksWithAlbums, (existedTrack, indexToChange) => {
               return index === indexToChange ?
                 trackWithAlbumInfo :
                 existedTrack

@@ -1,5 +1,5 @@
 import config from 'config';
-import _ from 'lodash';
+import isUndefined from 'lodash/isUndefined';
 
 function status(response) {
   if (response.status >= 200 && response.status < 300) {
@@ -13,7 +13,7 @@ function json(response) {
 }
 
 const checkForErrors = (json) => {
-  if(!_.isUndefined(json.error)) {
+  if(!isUndefined(json.error)) {
     throw new Error(`${json.error} + ${json.message}`)
   } else {
     return json;

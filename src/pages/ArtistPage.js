@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import replace from 'lodash/replace';
 
 import Page from '../components/Page';
 import Details from '../components/Details';
@@ -38,7 +38,7 @@ class ArtistPage extends React.Component {
        * needs more work
        */
       let artistWiki = artistInfo.artist.bio.summary;
-      let wikiHtmlRemoved = _.replace(artistWiki, /<\/?[^>]+(>|$)/g, '');
+      let wikiHtmlRemoved = replace(artistWiki, /<\/?[^>]+(>|$)/g, '');
       /**
        */
 

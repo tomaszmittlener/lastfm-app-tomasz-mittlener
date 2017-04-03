@@ -1,5 +1,8 @@
 import React from 'react';
-import _ from 'lodash';
+
+import map from 'lodash/map';
+import sortBy from 'lodash/sortBy'
+
 import List from './List'
 
 class ArtistsList extends React.Component {
@@ -17,7 +20,7 @@ class ArtistsList extends React.Component {
   }
 
   _sortAlphabetically() {
-    let alphaSortedArtists= _.sortBy(this.state.artistsToDisplay, 'name');
+    let alphaSortedArtists= sortBy(this.state.artistsToDisplay, 'name');
 
     this.setState({
       artistsToDisplay: alphaSortedArtists
@@ -39,7 +42,7 @@ class ArtistsList extends React.Component {
 
         <div className="list__items">
 
-          {_.map(artistsToDisplay, (item, index) =>
+          {map(artistsToDisplay, (item, index) =>
             <div className="list-item"
                  key={index}>
 

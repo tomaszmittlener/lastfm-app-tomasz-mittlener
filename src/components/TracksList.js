@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import _ from 'lodash';
+import map from 'lodash/map';
+import sortBy from 'lodash/sortBy'
+
 import List from './List'
 
 class TracksList extends React.Component {
@@ -18,7 +20,7 @@ class TracksList extends React.Component {
   }
 
   _sortAlphabetically() {
-    let alphaSortedTracks= _.sortBy(this.state.tracksToDisplay, 'name');
+    let alphaSortedTracks= sortBy(this.state.tracksToDisplay, 'name');
 
     this.setState({
       tracksToDisplay: alphaSortedTracks
@@ -27,7 +29,7 @@ class TracksList extends React.Component {
   }
 
   _groupByArtist() {
-    let artistsGroupedTracks = _.sortBy(this.state.tracksToDisplay, track => track.artist.name);
+    let artistsGroupedTracks = sortBy(this.state.tracksToDisplay, track => track.artist.name);
 
     this.setState({
       tracksToDisplay: artistsGroupedTracks
@@ -53,7 +55,7 @@ class TracksList extends React.Component {
 
         <div className="list__items">
 
-          {_.map(tracksToDisplay, (item, index) =>
+          {map(tracksToDisplay, (item, index) =>
             <div className="list-item"
                  key = {index}>
 
