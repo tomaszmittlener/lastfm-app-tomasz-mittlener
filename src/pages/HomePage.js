@@ -34,7 +34,7 @@ class HomePage extends React.Component {
 
   render(){
     return(
-      <Page className="homePage">
+      <Page className="homePage" username={this.state.username}>
 
         <PageTitle className="page-title--welcome">Welcome to the last.fm top tracks history app!</PageTitle>
 

@@ -33,7 +33,7 @@ class TopTracks extends React.Component {
       forEach(this.state.userTopTracksWithAlbums, (track, index) => {
         getTrackInfo(track.mbid).then(trackInfo => {
           const trackWithAlbumInfo =
-            trackInfo.track && trackInfo.track.album ?
+            trackInfo && trackInfo.track && trackInfo.track.album ?
               {...track, album: trackInfo.track.album.title } :
               {...track, album: false};
 
@@ -52,11 +52,11 @@ class TopTracks extends React.Component {
   render() {
 
     return (
-      <Page className="TopTracksPage">
+      <Page className="TopTracksPage" username={this.props.match.params.username}>
 
         <PageTitle className="page-title--user-top-tracks">{this.props.match.params.username}'s top tracks:</PageTitle>
 
-        <TracksList tracks={this.state.userTopTracksWithAlbums}>
+        <TracksList tracks={this.state.userTopTracksWithAlbums} username={this.props.match.params.username}>
           <div className="list__period-filters">
             <button className="list__filter" data-period='overall' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>(<span>overall</span> |</button>
             <button className="list__filter" data-period='7day' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>7days</span> |</button>
