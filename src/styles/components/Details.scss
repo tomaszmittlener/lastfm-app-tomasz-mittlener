@@ -3,6 +3,8 @@
 
   &__image {
     width: span(12);
+    padding: 0 0 ms(1) 0;
+
   }
 
   &__list {
@@ -10,18 +12,17 @@
 
     .title, .description {
       margin: 0;
-      padding: 0 0 ms(1) 0;
     }
 
     .title {
-      font-weight: bold;
+
     }
 
     .description {
-      max-width: 60ch;
+      padding: ms(-4) 0 ms(1) 0;
 
-      &:last-child{
-        padding: 0
+      &:last-child {
+        padding: ms(-4) 0 0 0;
       }
     }
   }
@@ -42,21 +43,18 @@
       @include span(6 of 10 last);
 
       .title, .description {
-        margin: 0;
-        padding: 0 0 ms(1) 0;
       }
 
       .title {
-        font-weight: bold;
       }
 
-      .description {
-        max-width: 60ch;
-
-        &:last-child{
-          padding: 0
-        }
-      }
+      //.description {
+      //  max-width: 60ch;
+      //
+      //  &:last-child{
+      //    padding: ms(-4) 0 ms(1) 0;
+      //  }
+      //}
     }
   }
 }

@@ -60,18 +60,18 @@ class ArtistPage extends React.Component {
 
         <Details className ={`details--artist-${this.props.match.params.artistId}`}>
 
-            <img className="details__image" src = {artistImage}/>
+          <img className="details__image" src = {artistImage}/>
 
-            <dl className="details__list">
-              <dt className="title">Artist: </dt>
-              <dd className="description">{artistInfo.name}</dd>
-              {artistWiki ?
-                <div>
-                  <dt className="title">Wiki:</dt>
-                  <dd className="description">{artistWiki}</dd>
-                </div> :
-                null}
-            </dl>
+          <dl className="details__list">
+            <dt className="title"><h3>Artist: </h3></dt>
+            <dd className="description">{artistInfo.name}</dd>
+            {artistWiki ?
+              <div>
+                <dt className="title"><h3>Wiki:</h3></dt>
+                <dd className="description">{artistWiki}</dd>
+              </div> :
+              null}
+          </dl>
 
         </Details>
 

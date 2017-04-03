@@ -47,7 +47,7 @@ class ArtistsList extends React.Component {
 
               <div className="list-item__text-container">
 
-                <h3 className="list-item__name-bold">{item.name}</h3>
+                <h3 className="list-item__name">{item.name}</h3>
 
               </div>
             </div>

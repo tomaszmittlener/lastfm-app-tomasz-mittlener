@@ -43,12 +43,13 @@ class TracksList extends React.Component {
         <div className="list__filters">
           {this.props.children}
 
+
           <button className="list__filter"
                   onClick={this._sortAlphabetically.bind(this)}>| <span>a-z</span> |</button>
 
           <button className="list__filter"
                   onClick={this._groupByArtist.bind(this)}><span>by artist</span> |</button>
-        </div>
+          </div>
 
         <div className="list__items">
 
@@ -61,14 +62,14 @@ class TracksList extends React.Component {
               <div className = "list-item__text-container">
 
                 {item.mbid ?
-                  <h3 className="list-item__name list-item__name-bold"><Link className="link" to = {`/tracks/${item.mbid}`}>{item.name}</Link></h3> :
-                  <h3 className=" list-item__name list-item__name-bold">{item.name}</h3>}
+                  <h3 className="list-item__name"><Link className="link" to = {`/tracks/${item.mbid}`}>{item.name}</Link></h3> :
+                  <h3 className=" list-item__name">{item.name}</h3>}
 
                 {item.artist.mbid ?
-                  <h3 className="list-item__name"><Link className="link" to={`/artists/${item.artist.mbid}`}>{item.artist.name}</Link></h3> :
-                  <h3 className="list-item__name">{item.artist.name}</h3>}
+                  <h4 className="list-item__name"><Link className="link" to={`/artists/${item.artist.mbid}`}>{item.artist.name}</Link></h4> :
+                  <h4 className="list-item__name">{item.artist.name}</h4>}
 
-                <h3 className="list-item__name list-item__name-light">{item.album}</h3>
+                <h5 className="list-item__name">{item.album}</h5>
 
               </div>
             </div>

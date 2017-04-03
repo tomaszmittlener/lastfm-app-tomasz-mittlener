@@ -16,8 +16,7 @@
       color: $logoText;
 
       .nav-item__logo {
-        width: ms(4);
-        height: ms(3);
+        width: ms(6);
         fill: $logoText;
       }
     }
@@ -25,6 +24,6 @@
 
   &__container {
     width: span(10);
-    margin: 0 span(1) + gutter();
+    margin: ms(2) span(1) + gutter() ms(2) span(1) + gutter();
   }
 }

@@ -73,17 +73,17 @@ class TrackPage extends React.Component {
 
 
           <dl className="details__list">
-            <dt className="title">Track title: </dt>
+            <dt className="title"><h3>Track title:</h3></dt>
             <dd className="description">{trackInfo.name}</dd>
-            <dt className="title">Track length: </dt>
+            <dt className="title"><h3>Track length:</h3></dt>
             <dd className="description">{trackLength}</dd>
-            <dt className="title">Artist: </dt>
+            <dt className="title"><h3>Artist:</h3></dt>
             <dd className="description">{trackArtistInfo.name}</dd>
-            <dt className="title">Album: </dt>
+            <dt className="title"><h3>Album:</h3></dt>
             <dd className="description">{trackAlbum.title}</dd>
             {trackWiki ?
               <div>
-                <dt className="title">Wiki:</dt>
+                <dt className="title"><h3>Wiki:</h3></dt>
                 <dd className="description">{trackWiki}</dd>
               </div> :
               null  }
