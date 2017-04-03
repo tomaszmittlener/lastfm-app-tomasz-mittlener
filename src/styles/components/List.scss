@@ -2,6 +2,21 @@
   width: span(10 of 10);
   margin: 0 0 ms(4) 0;
 
+  //filter types
+
+  &__filters {
+    @include container;
+  }
+
+  &__period-filters {
+    @include span(9 of 12 first);
+    text-align: left;
+  }
+
+  &__sort-filters {
+    @include span(3 of 12 last);
+    text-align: right;
+  }
 
   //filter buttons
 
@@ -24,8 +39,6 @@
 
   &__items {
     @include container;
-
-
   }
 
   &-item {
@@ -40,14 +53,12 @@
       @include span(1 of 4 first);
       width: 64px;
       height: 64px;
-
     }
 
     &__text-container {
       @include span(3 of 4);
       white-space: nowrap;
       padding: 0 ms(2) 0 0;
-
     }
 
     &__name {
@@ -55,7 +66,6 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-
     }
   }
 }
@@ -64,70 +74,25 @@
 
   .list {
 
-
     //list items
-
-    &__items {
-
-    }
 
     &-item {
       @include gallery(6 of 12);
-
-
-      &__image {
-
-
-      }
-
-      &__text-container {
-
-
-      }
-
-      &__name {
-
-      }
     }
-
-
-
   }
-  }
+}
+
 
 @include susy-breakpoint($small-destop) {
 
   .list {
 
-
     //list items
-
-    &__items {
-
-    }
 
     &-item {
 
       @include gallery(4 of 12);
-
-
-      &__image {
-
-
-      }
-
-      &__text-container {
-
-
-      }
-
-      &__name {
-
-      }
     }
-
-
-
   }
 }
 

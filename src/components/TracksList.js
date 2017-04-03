@@ -45,13 +45,14 @@ class TracksList extends React.Component {
         <div className="list__filters">
           {this.props.children}
 
+          <div className="list__sort-filters">
+            <button className="list__filter"
+                    onClick={this._sortAlphabetically.bind(this)}>| <span>a-z</span> |</button>
 
-          <button className="list__filter"
-                  onClick={this._sortAlphabetically.bind(this)}>| <span>a-z</span> |</button>
-
-          <button className="list__filter"
-                  onClick={this._groupByArtist.bind(this)}><span>by artist</span> |</button>
+            <button className="list__filter"
+                    onClick={this._groupByArtist.bind(this)}><span>by artist</span> |</button>
           </div>
+        </div>
 
         <div className="list__items">
 

@@ -34,8 +34,8 @@ class TopTracks extends React.Component {
         getTrackInfo(track.mbid).then(trackInfo => {
           const trackWithAlbumInfo =
             trackInfo.track && trackInfo.track.album ?
-            {...track, album: trackInfo.track.album.title } :
-            {...track, album: false};
+              {...track, album: trackInfo.track.album.title } :
+              {...track, album: false};
 
           this.setState({
             userTopTracksWithAlbums: map(this.state.userTopTracksWithAlbums, (existedTrack, indexToChange) => {
@@ -57,12 +57,14 @@ class TopTracks extends React.Component {
         <PageTitle className="page-title--user-top-tracks">{this.props.match.params.username}'s top tracks:</PageTitle>
 
         <TracksList tracks={this.state.userTopTracksWithAlbums}>
-          <button className="list__filter" data-period='overall' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>(<span>overall</span> |</button>
-          <button className="list__filter" data-period='7day' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>7days</span> |</button>
-          <button className="list__filter" data-period='1month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>1 month</span> |</button>
-          <button className="list__filter" data-period='3month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>3 month</span> |</button>
-          <button className="list__filter" data-period='6month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>6 month</span> |</button>
-          <button className="list__filter" data-period='12month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>12 month</span>)</button>
+          <div className="list__period-filters">
+            <button className="list__filter" data-period='overall' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}>(<span>overall</span> |</button>
+            <button className="list__filter" data-period='7day' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>7days</span> |</button>
+            <button className="list__filter" data-period='1month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>1 month</span> |</button>
+            <button className="list__filter" data-period='3month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>3 month</span> |</button>
+            <button className="list__filter" data-period='6month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>6 month</span> |</button>
+            <button className="list__filter" data-period='12month' onClick={this._getTracksAndAlbumsByPeriod.bind(this)}><span>12 month</span>)</button>
+          </div>
         </TracksList>
       </Page>
     )

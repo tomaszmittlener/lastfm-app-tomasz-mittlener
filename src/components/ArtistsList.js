@@ -35,9 +35,10 @@ class ArtistsList extends React.Component {
       <List className="list--artist-list">
         <div className="list__filters">
           {this.props.children}
-
+          <div className="list__sort-filters">
           <button className="list__filter"
                   onClick={this._sortAlphabetically.bind(this)}>| <span>a-z</span> |</button>
+          </div>
         </div>
 
         <div className="list__items">
